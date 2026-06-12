@@ -14,7 +14,6 @@ public class ResultadoVentana {
         label.setVerticalAlignment(JLabel.CENTER);
         label.setFont(new Font("Arial", Font.BOLD, 20));
 
-        // Elige la imagen y el texto según z
         String texto;
         String rutaImg;
         if (z >= 0.80) {
@@ -25,13 +24,11 @@ public class ResultadoVentana {
             rutaImg = "OIP.jpg";
         }
 
-        // Cargar y escalar la imagen
         ImageIcon iconoOriginal = new ImageIcon(rutaImg);
         Image imgEscalada = iconoOriginal.getImage()
                 .getScaledInstance(150, 150, Image.SCALE_SMOOTH);
         label.setIcon(new ImageIcon(imgEscalada));
 
-        // Configurar posición del texto respecto a la imagen
         label.setText(texto);
         label.setHorizontalTextPosition(SwingConstants.CENTER);
         label.setVerticalTextPosition(SwingConstants.BOTTOM);

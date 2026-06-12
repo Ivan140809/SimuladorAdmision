@@ -2,7 +2,6 @@ import com.google.gson.Gson;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.FileReader;
 
 public class Main {
@@ -15,13 +14,11 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 700);
 
-        // Cargar fondo opcional: puedes cambiar Color o usar JLabel con imagen si lo deseas
-        ImageIcon imagenFondo = new ImageIcon("space_stars_galaxy_nebula-1918233.jpg"); // ← Asegúrate de que este archivo exista
+        ImageIcon imagenFondo = new ImageIcon("space_stars_galaxy_nebula-1918233.jpg");
         JLabel fondo = new JLabel(imagenFondo);
         fondo.setLayout(new GridLayout(9, 2, 5, 5));
         frame.setContentPane(fondo);
 
-        // Campos de entrada
         JTextField greField = new JTextField();
         JTextField toeflField = new JTextField();
         JTextField ratingField = new JTextField();
@@ -30,7 +27,6 @@ public class Main {
         JTextField cgpaField = new JTextField();
         JTextField researchField = new JTextField();
 
-        // Añadir etiquetas y campos
         JLabel labelGRE = new JLabel("GRE Score:");
         labelGRE.setForeground(Color.WHITE);
         fondo.add(labelGRE); fondo.add(greField);
@@ -59,22 +55,17 @@ public class Main {
         labelResearch.setForeground(Color.WHITE);
         fondo.add(labelResearch); fondo.add(researchField);
 
-
         JButton btnCalcular = new JButton("Calcular Admisión");
         JLabel resultadoLabel = new JLabel("Probabilidad: ");
 
-        // Cambiar color del texto a blanco
         btnCalcular.setForeground(Color.WHITE);
         resultadoLabel.setForeground(Color.WHITE);
-
-        // Cambiar fondo a blanco (para JButton)
-        btnCalcular.setBackground(Color.gray); // por ejemplo negro para contraste
+        btnCalcular.setBackground(Color.gray);
         btnCalcular.setOpaque(true);
         btnCalcular.setBorderPainted(false);
         frame.add(btnCalcular);
         frame.add(resultadoLabel);
 
-        // Acción del botón
         btnCalcular.addActionListener(e -> {
             try {
                 Gson gson = new Gson();
@@ -82,14 +73,12 @@ public class Main {
                 Datos pesos = gson.fromJson(reader, Datos.class);
                 reader.close();
 
-                // Imprimir los pesos en consola (opcional para depuración)
                 System.out.println("Coeficientes cargados:");
                 System.out.println("GRE: " + pesos.coefficients.gre);
                 System.out.println("TOEFL: " + pesos.coefficients.toefl);
                 System.out.println("CGPA: " + pesos.coefficients.cgpa);
                 System.out.println("Intercept: " + pesos.intercept);
 
-                // Leer entradas del usuario
                 double gre = Double.parseDouble(greField.getText());
                 double toefl = Double.parseDouble(toeflField.getText());
                 double rating = Double.parseDouble(ratingField.getText());
@@ -98,7 +87,6 @@ public class Main {
                 double cgpa = Double.parseDouble(cgpaField.getText());
                 double research = Double.parseDouble(researchField.getText());
 
-                // Calcular predicción
                 double z = gre * pesos.coefficients.gre +
                         toefl * pesos.coefficients.toefl +
                         rating * pesos.coefficients.rating +
@@ -108,13 +96,10 @@ public class Main {
                         research * pesos.coefficients.research +
                         pesos.intercept;
 
-//                double probabilidad = 1 / (1 + Math.exp(-z));
                 double probabilidad = z;
 
                 resultadoLabel.setText(String.format("Probabilidad: %.2f%%", probabilidad * 100));
-
                 ResultadoVentana.mostrarResultado(z);
-
 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(frame, "Error en los datos o al leer el JSON");

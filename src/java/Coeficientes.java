@@ -15,4 +15,6 @@ public class Coeficientes {
     public double cgpa;
     @SerializedName("Research")
     public double research;
+
+    
 }
