@@ -1,8 +1,8 @@
 # Simulador de Admisión Universitaria
 
-![Java](https://img.shields.io/badge/Java-25-orange?style=for-the-badge&logo=openjdk&logoColor=white)
-![JavaFX](https://img.shields.io/badge/JavaFX-21-007396?style=for-the-badge&logo=java&logoColor=white)
-![Maven](https://img.shields.io/badge/Maven-Build-blue?style=for-the-badge&logo=apachemaven&logoColor=white)
+![C++](https://img.shields.io/badge/C++-11-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![GCC](https://img.shields.io/badge/GCC-g++-A42E2B?style=for-the-badge&logo=gnu&logoColor=white)
+![Java](https://img.shields.io/badge/Java-11+-orange?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Status](https://img.shields.io/badge/Estado-Finalizado-brightgreen?style=for-the-badge)
 
 Aplicación basado en Java que predice la probabilidad de admisión a la universidad usando regresión lineal. El modelo fue entrenado con datos reales de 400 estudiantes y los coeficientes se cargan desde un archivo JSON generado por un pipeline ETL desarrollado en C++.
